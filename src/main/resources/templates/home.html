@@ -1,48 +1,48 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Bingo!</title>
-    <link rel="stylesheet" href="../home.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <title>Bingo!</title>
+  <meta name="description" content="Play bingo with your friends by network!">
+  <meta name="author" content="Filip">
+  <link rel="stylesheet" href="../static/home.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<div id="topBar"><div id="logo">
-    <span style="color:#ff9933;">B</span>
-    <span style="color:#ffff00;">i</span>
-    <span style="color:#cc0099;">n</span>
-    <span style="color:#00ff00;">g</span>
-    <span style="color:#ff0000;">o</span>
-    <span style="">!</span>
-</div></div>
-<div id="main">
-    <form class="horizontalForm" action="/createroom" method="POST">
-        <h1>Create new room</h1>
-        <div style="clear:both;"></div>
-        <h2>Your name: </h2>
-        <div style="clear:both;"></div>
-        <input class="input" type="text" name="name">
-        <div style="clear:both;"></div>
-        <input class="submitButton" type="submit" value="Create">
-    </form>
-    <div style="clear:both;"></div>
-    <h1>Or</h1>
-    <div style="clear:both;"></div>
-    <h1>Join friends!</h1>
-    <div style="clear:both;"></div>
-    <form class="horizontalForm" action ="/joinroom" method="POST">
-        <h2>Room id: </h2>
-        <div style="clear:both;"></div>
-        <input class="input" type="text" name="roomId">
-        <div style="clear:both;"></div>
-        <h2>Your name: </h2>
-        <div style="clear:both;"></div>
-        <input class="input" type="text" name="name">
-        <div style="clear:both;"></div>
-        <input class="submitButton" type="submit" value="Join">
-    </form>
+<div id="logo">
+<span id="b">B</span>
+<span id="i">i</span>
+<span id="n">n</span>
+<span id="g">g</span>
+<span id="o">o</span>
+<span id="ex">!</span>
 </div>
 
+<div style="clear:both"></div>
+
+<div id="mainContent">
+	<form th:action="@/new"" method="POST">
+	
+	<input class="textEntry" type="text" name="name" placeholder="name">
+	<div style="clear:both"></div>
+	<input class="entryButton" type="submit" value="Create room">
+	</form>
+<div style="clear:both"></div>
+<h5>or</h5>
+<div style="clear:both"></div>
+<h5>join your friends</h5>
+<div style="clear:both"></div>
+<form th:action"@/join" method="POST">
+	<input class="textEntry" type="text" name="code" placeholder="room code" maxlength="5">
+	<div style="clear:both"></div>
+	<input class="textEntry" type="text" name="name" placeholder="name">
+	<div style="clear:both"></div>
+	<input class="entryButton" type="submit" value="Join">
+</form>
+
+</div>
+
+  
 </body>
 </html>
