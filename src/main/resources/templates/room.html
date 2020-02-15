@@ -28,7 +28,8 @@ request.onload = function() {
     data.forEach(player => {
       const playerLine = document.createElement('div')
       const kickPlayerButton = document.createElement('input')
-      kickPlayerButton.setAttribute('onClick', 'kickUser(player.id);')
+      kickPlayerButton.setAttribute('onclick', 'kickUser(player.id);')
+      kickPlayerButton.onclick = function(){kickUser(player.id);};
       kickPlayerButton.setAttribute('type', 'submit')
       playerLine.setAttribute('class', 'player')
       playerLine.textContent = "[" + player.id + "] " + player.name
