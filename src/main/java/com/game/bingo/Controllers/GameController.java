@@ -4,10 +4,8 @@ import com.game.bingo.Models.Board;
 import com.game.bingo.Models.Player;
 import com.game.bingo.Services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Set;
 
 
@@ -40,7 +38,7 @@ public class GameController {
     public Set<Integer> getOwnerNumbers(@RequestParam(name = "id", defaultValue = "0") int id){
         return gameService.getOwnerNumbers(id);
     }
-    @PostMapping("/room/kick")
+    @GetMapping("/room/kick")
     public void kickUserFromRoom(@RequestParam(name = "id", defaultValue = "0")int id){
         gameService.kickUser(id);
     }

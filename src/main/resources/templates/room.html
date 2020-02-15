@@ -10,7 +10,7 @@
 <script>
 function kickUser(userId){
 var request = new XMLHttpRequest()
-request.open("POST", "http://localhost:8080/room/kick?id="+userId, true)
+request.open("GET", "http://localhost:8080/room/kick?id="+userId, true)
 request.send()
 }
 setInterval(function() {
@@ -28,7 +28,7 @@ request.onload = function() {
     data.forEach(player => {
       const playerLine = document.createElement('div')
       const kickPlayerButton = document.createElement('input')
-      kickPlayerButton.setAttribute('onClick', kickUser(player.id))
+      kickPlayerButton.setAttribute('onClick', 'kickUser(player.id);')
       kickPlayerButton.setAttribute('type', 'submit')
       playerLine.setAttribute('class', 'player')
       playerLine.textContent = "[" + player.id + "] " + player.name
