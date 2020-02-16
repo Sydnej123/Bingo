@@ -1,0 +1,190 @@
+body{
+    background-color: #e3d6d5
+    color: white;
+}
+
+#mainContent{
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+   
+    
+}
+
+#playerList{
+    width: 300px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+#chat{
+    width: 300px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    float: right;
+}
+#game{
+    width: 650px;
+    float:left;
+}
+
+#newNumber{
+    font-size: 100px;
+    font-weight: 1000;
+}
+#playerList{
+    text-align: right;
+}
+.player{
+    font-size: 18px;
+    height: 20px;
+    border-bottom: 1px solid lightgrey;
+    padding: 2px 2px 2px 2px;
+    
+}
+.player img{
+    margin-left: 5px;
+    
+}
+.kickUser{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 4px 4px 4px;
+    cursor: pointer;
+    float: left;
+}
+.kickUser:hover{
+    background-color: #4287f5;
+}
+.message{
+    width: 275px;
+    float: left;
+    font-size: 14px;
+    background-color: lightgrey;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    margin-right: 15px;
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    text-align: left;
+    color: black;
+    max-width: 275px;
+    word-wrap: break-word;
+}
+
+#messages{
+    width: 300px;
+    max-height:600px;
+    overflow: auto;
+}
+
+.messageAuthor{
+    font-size: 12px;
+    color: grey;
+    margin-left: 5px;
+    float: left;
+}
+.messageDate{
+    font-size: 12px;
+    color: grey;
+    margin-right: 15px;
+    width: 70px;
+    float: right;
+}
+
+.messageEntry{
+    border: 0;
+    border-bottom: 2px solid lightgrey;
+    width: 230px;
+    float:left;
+    margin-left: 5px;
+    margin-bottom: 20px;
+     margin-top: 15px;
+}
+
+.messageEntry:focus{
+    border: 0px;
+    border-bottom: 2px solid #4287f5;
+  
+}
+
+#sendMessage{
+    border-radius: 5px;
+    border: 1px solid #4287f5;
+    color: #4287f5;
+    float: right;
+    width: 50px;
+    margin-right: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#sendMessage:hover{
+    background-color: #4287f5;
+    color: white;
+}
+
+.cell{
+    float: left;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.cell:hover{
+    background-color: #4287f5;
+    color: white;
+    
+}
+
+#mainBoard{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#game{
+    width: 520px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
