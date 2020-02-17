@@ -7,6 +7,7 @@ import com.game.bingo.Repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -59,6 +60,22 @@ public class GameService {
         return owner.getId_player();
     }
 
+    public Room getRoomByCode(String code){
+        List<Room> room = roomRepository.findFirstByCode(code);
+            return room.isEmpty() ? null : room.get(0);
+    }
+
+
+    public int join(String name, String code) {
+        Player player = new Player();
+        player.setName(name);
+        Room room = getRoomByCode(code);
+        player.setRoom(room);
+        playerRepository.save(player);
+
+        room.getPlayers().add(player);
+        return (int) room.getId_room();
+    }
 
 
 }

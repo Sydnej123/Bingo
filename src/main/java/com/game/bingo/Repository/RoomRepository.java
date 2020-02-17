@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface RoomRepository extends CrudRepository<Room, Integer> {
+    List<Room> findFirstByCode(String code);
     List<Room> findByCode(String code);
 }
