@@ -4,19 +4,53 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Data
+
 @Entity
-class Player{
+public class Player{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_player;
+
     @NotNull
     @Column(length = 20)
-    private long name;
+    private String name;
     private boolean is_owner;
 
+    public long getId_player() {
+        return id_player;
+    }
+
+    public void setId_player(long id_player) {
+        this.id_player = id_player;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isIs_owner() {
+        return is_owner;
+    }
+
+    public void setIs_owner(boolean is_owner) {
+        this.is_owner = is_owner;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @ManyToOne
-    @JoinColumn(name="id_room", nullable = false)
+    @JoinColumn(name="room_id", nullable = false)
     private Room room;
 }
 

@@ -3,6 +3,7 @@ package com.game.bingo.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -17,5 +18,5 @@ public class Board {
     private Player player;
 
     @OneToMany(mappedBy = "board")
-    private Set<Number> numbers;
+    private Set<Number> numbers = new HashSet<>();
 }

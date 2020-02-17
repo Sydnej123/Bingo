@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 16 Lut 2020, 21:51
+-- Czas generowania: 17 Lut 2020, 15:25
 -- Wersja serwera: 10.4.6-MariaDB
 -- Wersja PHP: 7.3.8
 
@@ -72,6 +72,17 @@ CREATE TABLE `player` (
   `is_owner` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Zrzut danych tabeli `player`
+--
+
+INSERT INTO `player` (`id_player`, `name`, `room_id`, `is_owner`) VALUES
+(1, 'name=Fifi', 3, 1),
+(2, 'name=Fifi', 4, 1),
+(3, 'name=Fifi', 5, 1),
+(4, 'name=Fifi', 6, 1),
+(5, 'name=Fifi', 7, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -80,9 +91,19 @@ CREATE TABLE `player` (
 
 CREATE TABLE `room` (
   `id_room` int(11) NOT NULL,
-  `code` varchar(5) NOT NULL,
-  `owner_id` int(11) NOT NULL
+  `code` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `room`
+--
+
+INSERT INTO `room` (`id_room`, `code`) VALUES
+(3, '3E456'),
+(4, '40W65'),
+(5, 'C7D7E'),
+(6, '25E6Y'),
+(7, '5433B');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -121,8 +142,41 @@ ALTER TABLE `player`
 -- Indeksy dla tabeli `room`
 --
 ALTER TABLE `room`
-  ADD PRIMARY KEY (`id_room`),
-  ADD KEY `FK_ROOM_OWNER` (`owner_id`);
+  ADD PRIMARY KEY (`id_room`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `board`
+--
+ALTER TABLE `board`
+  MODIFY `id_board` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `message`
+--
+ALTER TABLE `message`
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `number`
+--
+ALTER TABLE `number`
+  MODIFY `id_number` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `player`
+--
+ALTER TABLE `player`
+  MODIFY `id_player` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT dla tabeli `room`
+--
+ALTER TABLE `room`
+  MODIFY `id_room` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -152,12 +206,6 @@ ALTER TABLE `number`
 --
 ALTER TABLE `player`
   ADD CONSTRAINT `FK_ROOM_PLAYER` FOREIGN KEY (`room_id`) REFERENCES `room` (`id_room`);
-
---
--- Ograniczenia dla tabeli `room`
---
-ALTER TABLE `room`
-  ADD CONSTRAINT `FK_ROOM_OWNER` FOREIGN KEY (`owner_id`) REFERENCES `player` (`id_player`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
