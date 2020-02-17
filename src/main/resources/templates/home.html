@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <title>Bingo!</title>
   <meta name="description" content="Play bingo with your friends by network!">
   <meta name="author" content="Filip">
-  <link rel="stylesheet" href="../static/home.css">
+  <link rel="stylesheet" href="../static/home.css" th:href="@{home.css}"type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 
@@ -22,7 +22,7 @@
 <div style="clear:both"></div>
 
 <div id="mainContent">
-	<form th:action="@/new"" method="POST">
+	<form action="/new"method="POST">
 	
 	<input class="textEntry" type="text" name="name" placeholder="name">
 	<div style="clear:both"></div>
@@ -33,7 +33,7 @@
 <div style="clear:both"></div>
 <h5>join your friends</h5>
 <div style="clear:both"></div>
-<form th:action"@/join" method="POST">
+<form action="/join" method="POST">
 	<input class="textEntry" type="text" name="code" placeholder="room code" maxlength="5">
 	<div style="clear:both"></div>
 	<input class="textEntry" type="text" name="name" placeholder="name">
