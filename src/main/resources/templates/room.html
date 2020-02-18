@@ -11,8 +11,48 @@
 <body>
     <div id="mainContent">
         <div id="playerList">
-            <div class="player">#1 Gracz<img th:src="@{/img/crown.png}" width="18" height="18"><div class="kickUser">x</div> </div>
+
         </div>
+		
+		   
+		<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+			
+			function kickUser(id){
+			}
+			
+			$(window).load(function(){
+			
+			setInterval(function(){
+				$("#playerList").innerHTML = "";
+				$.getJSON(window.location.href+"/players", function(data){
+					data.forEach(player => {
+						const player = document.createElement("player");
+						const kickUser = document.createElement("kickUser");
+						kickUser.innerHTML = "x";
+						
+						var playerInnerHtml = "#" + player.id_player + " " + player.name;
+						if(player.is_owner){
+						playerInnerHtml += "<img th:src="@{/img/crown.png}" width="18" height="18">";
+						}
+						player.innerHTML = playerInnerHtml;
+						
+						kickUser.setAttribute('onClick', 'kickUser(player.id);')
+						
+						
+						
+						
+						player.appendChild(kickUser);
+						$("#playerList").appendChild(player);
+					})
+				});
+			
+			
+				
+			}, 200);
+			
+			})
+			
+		</script>
         
         <div id="game">
             <div id="newNumber">6</div>
