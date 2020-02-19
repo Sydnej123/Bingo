@@ -1,6 +1,8 @@
 package com.game.bingo.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -49,6 +51,7 @@ public class Player{
         this.room = room;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="room_id", nullable = false)
     private Room room;

@@ -13,37 +13,40 @@
         <div id="playerList">
 
         </div>
-		
-		   
-		<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script> 
 			
 			function kickUser(id){
 			}
 			
-			$(window).load(function(){
 			
+			
+			$(window).on('load', function(){
+			console.log("i am working");
 			setInterval(function(){
-				$("#playerList").innerHTML = "";
+				
 				$.getJSON(window.location.href+"/players", function(data){
+					var i = 0;
+					const players = document.createElement("players");
 					data.forEach(player => {
-						const player = document.createElement("player");
+						const user = document.createElement("user"+ i);
+						i++;
+						user.setAttribute("class", "player")
 						const kickUser = document.createElement("kickUser");
+						kickUser.setAttribute("class", "kickUser")
 						kickUser.innerHTML = "x";
-						
 						var playerInnerHtml = "#" + player.id_player + " " + player.name;
 						if(player.is_owner){
-						playerInnerHtml += "<img th:src="@{/img/crown.png}" width="18" height="18">";
+						playerInnerHtml += "<img th:src=\"@{/img/crown.png}\" width=\"18\" height=\"18\">";
 						}
-						player.innerHTML = playerInnerHtml;
-						
-						kickUser.setAttribute('onClick', 'kickUser(player.id);')
-						
-						
-						
-						
-						player.appendChild(kickUser);
-						$("#playerList").appendChild(player);
+						user.innerHTML = playerInnerHtml;
+						kickUser.setAttribute('onClick', 'kickUser(' + player.id + ');');
+						user.append(kickUser);
+						players.append(user);
 					})
+					$("#playerList").empty();
+					$("#playerList").append(players);
+					
 				});
 			
 			
@@ -52,7 +55,11 @@
 			
 			})
 			
+			
+			
 		</script>
+		   
+		
         
         <div id="game">
             <div id="newNumber">6</div>

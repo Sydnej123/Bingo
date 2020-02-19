@@ -26,12 +26,12 @@ public class GameController {
 
     @GetMapping(path = "/room/{id}/players")
     public List<Player> getListOfPlayersByRoomId(@PathVariable int id){
-        return playerRepository.findByRoom(roomRepository.findById(id).get());
+        return playerRepository.findByRoom(roomRepository.findById((long) id).get());
     }
 
     @PostMapping("/room/remove")
     public void removePlayerFromRoom(int id){
-        playerRepository.deleteById(id);
+        playerRepository.deleteById((long) id);
     }
 
 

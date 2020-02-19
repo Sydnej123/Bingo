@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RoomRepository extends CrudRepository<Room, Integer> {
+public interface RoomRepository extends CrudRepository<Room, Long> {
     List<Room> findFirstByCode(String code);
     List<Room> findByCode(String code);
 }
