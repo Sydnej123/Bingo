@@ -35,6 +35,15 @@ public class GameController {
         playerRepository.deleteById((long) Integer.parseInt(params.get("id_player").toString()));
     }
 
+    @PostMapping("/room/{id}/message/send")
+    public void sendMessage(@RequestParam Map<String, String> params){
+
+    }
+
+    @GetMapping("/room/{id}/message")
+    public String getMessages(@PathVariable long id){
+        return "";
+    }
 
 
 }

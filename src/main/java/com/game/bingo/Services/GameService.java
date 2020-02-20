@@ -1,5 +1,6 @@
 package com.game.bingo.Services;
 
+import com.game.bingo.Models.Message;
 import com.game.bingo.Models.Player;
 import com.game.bingo.Models.Room;
 import com.game.bingo.Repository.PlayerRepository;
@@ -75,6 +76,14 @@ public class GameService {
 
         room.getPlayers().add(player);
         return (int) room.getId_room();
+    }
+
+    public void sendMessage(long playerId, long roomId){
+
+    }
+
+    public List<Message> getMessages(long roomId){
+
     }
 
 
