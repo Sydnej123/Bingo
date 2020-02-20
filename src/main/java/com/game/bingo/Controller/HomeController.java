@@ -33,7 +33,7 @@ public class HomeController {
     public RedirectView create(@RequestBody String ownerName, HttpSession session){
         Room room = gameService.createNewRoom();
         long ownerId = gameService.createOwner(room, ownerName);
-        session.setAttribute("ownerId", ownerId);
+        session.setAttribute("ownership", true);
         RedirectView rv = new RedirectView();
         rv.setContextRelative(true);
         rv.setUrl("/room/"+room.getId_room());

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 // getallplayers
 // remove player
@@ -29,9 +30,9 @@ public class GameController {
         return playerRepository.findByRoom(roomRepository.findById((long) id).get());
     }
 
-    @PostMapping("/room/remove")
-    public void removePlayerFromRoom(int id){
-        playerRepository.deleteById((long) id);
+    @PostMapping("/room/{id}/remove")
+    public void removePlayerFromRoom(@RequestParam Map<String, String> params){
+        playerRepository.deleteById((long) Integer.parseInt(params.get("id_player").toString()));
     }
 
 
