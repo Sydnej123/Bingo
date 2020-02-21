@@ -3,6 +3,7 @@ package com.game.bingo.Services;
 import com.game.bingo.Models.Message;
 import com.game.bingo.Models.Player;
 import com.game.bingo.Models.Room;
+import com.game.bingo.Repository.MessageRepository;
 import com.game.bingo.Repository.PlayerRepository;
 import com.game.bingo.Repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class GameService {
 
     @Autowired
     PlayerRepository playerRepository;
+
+    @Autowired
+    MessageRepository messageRepository;
 
     public Room createNewRoom(){
         Room room = new Room();
@@ -78,11 +82,19 @@ public class GameService {
         return (int) room.getId_room();
     }
 
-    public void sendMessage(long playerId, long roomId){
-
+    public void sendMessage(long playerId, long roomId, String message){
+        Message newMessage = new Message();
+        newMessage.setContent(message);
+        newMessage.setPlayer(playerRepository.findById(playerId).get());
+        messageRepository.save(newMessage);
+        roomRepository.findById(roomId).get().getMessageList().add(newMessage);
     }
 
     public List<Message> getMessages(long roomId){
+        return messageRepository.findByRoom(roomRepository.findById(roomId).get());
+    }
+
+    public List<Message> getPreviousMessages(){
 
     }
 

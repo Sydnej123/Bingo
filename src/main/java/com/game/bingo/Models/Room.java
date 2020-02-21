@@ -5,7 +5,9 @@ import lombok.Generated;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,4 +46,15 @@ public class Room {
 
     @OneToMany(mappedBy = "room")
     private Set<Player> players = new HashSet<>();
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    @OneToMany(mappedBy = "room")
+    private List<Message> messageList = new ArrayList<>();
 }
