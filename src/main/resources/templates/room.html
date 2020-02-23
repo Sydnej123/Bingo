@@ -15,7 +15,7 @@
         </div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script> 
-			
+			$.(window).on('load', connect());
 			function kickUser(userId){
 			$.post(window.location.href+"/remove", {id_player: userId});
 			clearInterval(refreshPlayers)
@@ -186,25 +186,45 @@
             </div>
             
         </div>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+		
         <div id="chat">
-        <div id="messages">
-            <div class="messageAuthor">Maciek</div>
-            <div class="messageDate">19:01</div>
-            <div class="message">Wiadomośćjofsojfdsoifjdsoifosdfodsifdsoifjsoijfdosifdosijfdsoijfoidsfdsoi</div>
-            <div class="messageAuthor">Maciek</div>
-            <div class="message">Wiadomość</div>
-            <div class="messageAuthor">Maciek</div>
-            <div class="message">Wiadomość</div>
-            <div class="messageAuthor">Maciek</div>
-            <div class="message">Wiadomość</div>
-            <div class="messageAuthor">Maciek</div>
-            <div class="message">Wiadomość</div>
-            <div class="messageAuthor">Maciek</div>
-            <div class="message">Wiadomość</div>
-        </div>   
+			<div id="messages">
+				<div class="messageAuthor">Maciek</div>
+				<div class="messageDate">19:01</div>
+				<div class="message">Wiadomośćjofsojfdsoifjdsoifosdfodsifdsoifjsoijfdosifdosijfdsoijfoidsfdsoi</div>
+				
+				<div class="messageAuthor">Maciek</div>
+				<div class="message">Wiadomość</div>
+				<div class="messageAuthor">Maciek</div>
+				<div class="message">Wiadomość</div>
+				<div class="messageAuthor">Maciek</div>
+				<div class="message">Wiadomość</div>
+				<div class="messageAuthor">Maciek</div>
+				<div class="message">Wiadomość</div>
+				<div class="messageAuthor">Maciek</div>
+				<div class="message">Wiadomość</div>
+			</div>   
             <input class="messageEntry" type="text" name="newMessage" placeholder="Send message...">
             <div id="sendMessage">Send</div>
         </div>
+		
+		<script>
+		function connect(){
+			var socket = new SockJS('/messages');
+			stompClient = Stomp.over(socket);
+			stompClient.connetct({}, function(frame){
+				console.log('Connected' + frame);
+				stompClient.subscribe('/topic/greetings', function(greeting){
+					showGreeting(JSON.parse(greeting.body).content);
+					
+				});
+			});
+		}
+			
+			
+		</script>
+		
     </div>
 </body>

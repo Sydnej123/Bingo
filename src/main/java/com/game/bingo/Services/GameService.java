@@ -81,22 +81,4 @@ public class GameService {
         room.getPlayers().add(player);
         return (int) room.getId_room();
     }
-
-    public void sendMessage(long playerId, long roomId, String message){
-        Message newMessage = new Message();
-        newMessage.setContent(message);
-        newMessage.setPlayer(playerRepository.findById(playerId).get());
-        messageRepository.save(newMessage);
-        roomRepository.findById(roomId).get().getMessageList().add(newMessage);
-    }
-
-    public List<Message> getMessages(long roomId){
-        return messageRepository.findByRoom(roomRepository.findById(roomId).get());
-    }
-
-    public List<Message> getPreviousMessages(){
-
-    }
-
-
 }
